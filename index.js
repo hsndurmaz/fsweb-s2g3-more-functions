@@ -16,8 +16,9 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(istenen) {
+  const dosyaAdi = istenen.split("/");
+  return dosyaAdi[dosyaAdi.length - 1];
 }
 
 /*
@@ -38,8 +39,12 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(sayilar) {
+  if (sayilar.length === 0) {
+    return null;
+  }
+  const toplam = sayilar.reduce((toplam, sayi) => toplam + sayi);
+  return toplam / sayilar.length;
 }
 
 /*
@@ -62,10 +67,26 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(veriler, ortalama) {
+  const ort = ortalama(veriler);
+  console.log("ort", ort);
+  if (ort === null) {
+    return null;
+  }
+  const ortbuyukler = veriler.filter((sayi) => sayi >= ort);
+  return ortbuyukler;
 }
-
+/*console.log(
+  "ortalamadanBuyukleriBul",
+  ortalamadanBuyukleriBul([], ortalamaBul)
+);
+console.log(
+  "ortalamadanBuyukleriBul",
+  ortalamadanBuyukleriBul(
+    [109, 216, 288, 143, 71, 185, -278, 194, 5],
+    ortalamaBul
+  )
+);
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
   console.log("Kodlar sorunsuz çalışıyor!");
